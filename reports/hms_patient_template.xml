@@ -1,0 +1,110 @@
+<odoo>
+    <data>
+        <template id="hms_patient_tamplate">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+
+
+
+                        <!-- #################-->
+                        <div class="page">
+                            <div class="row ">
+                                <div class="col-4 text-left ">
+                                    <span class="align-left text-danger" style="font-size:60px;margin-left: 60px;">
+                                        <strong>Patint States Report</strong>
+                                    </span>
+
+                                    <!-- <img src="image.jpeg" alt="" class="align-right text-danger"
+                                        style="height: 200px;width: 200px;" /> -->
+
+                                </div>
+
+                            </div>
+                            <table class="table borderless" style="height:100px;">
+                                <tr class="text-center">
+                                    <td class=" mr-2 text-center fw-bolder">
+                                        Name:
+                                        <span t-esc="o.first_name + ' ' + o.last_name" />
+                                    </td>
+                                    <td class=" mr-2 text-center fw-bolder">
+                                        Birth Date:
+                                        <span t-field="o.birth_day" />
+                                    </td>
+                                </tr>
+                                <tr class="text-center ">
+                                    <td class="mr-2 text-center fw-bolder">
+                                        Age:
+                                        <span t-field="o.age" />
+                                    </td>
+                                    <td class=" mr-2 text-center fw-bolder">
+                                        PCR:
+                                        <span t-field="o.PCR" />
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td class=" mr-2 text-center fw-bolder">
+                                        Department:
+                                        <span t-field="o.department" />
+                                    </td>
+                                    <td class=" mr-2 text-center fw-bolder">
+                                        Blood Type:
+                                        <span t-field="o.blood_type" />
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td class=" mr-2 text-center fw-bolder">
+                                        Doctors:
+                                        <span t-field="o.doctors" />
+                                    </td>
+                                    <td class=" mr-2 text-center fw-bolder">
+                                        Email:
+                                        <span t-field="o.email" />
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <div>
+                                <center>
+                                    <strong>
+                                        Logs History
+                                    </strong>
+                                </center>
+
+                            </div>
+
+                            <table class="table table-sm table-bordered">
+                                <thead style="display: table-row-group">
+                                    <tr class="table-primary border border-white">
+                                        <th class="text-center border border-white"> User</th>
+                                        <th class="text-center border border-white"> Date</th>
+                                        <th class="text-center border border-white"> Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="counter" t-value="0" />
+                                    <t t-foreach="o.states_logs" t-as="A">
+                                        <t t-set="counter" t-value="counter + 1" />
+                                        <tr class="border border-white">
+                                            <td class="text-center border border-white">
+                                                <span t-field="A.create_uid" />
+                                            </td>
+                                            <td class="text-center border border-white">
+                                                <span t-field="A.create_date" />
+                                            </td>
+                                            <td class="text-center border border-white">
+                                                <span t-field="A.description" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ############################ -->
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id='hms_category' model='ir.module.category'>
+            <field name='name'>HMS category</field>
+        </record>
+
+        <record id='hms_managers' model='res.groups'>
+            <field name='name'>Managers</field>
+            <field name='category_id' ref= "hms_category"/>
+        </record>
+
+        <record id='hms_users' model='res.groups'>
+            <field name='name'>Users</field>
+            <field name='category_id' ref= "hms_category"/>
+        </record>
+
+        <record id='hms_users_patient_permissions' model='ir.rule'>
+            <field name='name'>Hms patient rule</field>
+            <field name='model_id' ref= "model_patient"/>
+            <field name='groups' eval="[(4,ref('hms_users'))]"/>
+            <field name='domain_force'>[('create_uid','=',user.id)]</field>
+        </record>
+
+
+
+    </data>
+
+</odoo>

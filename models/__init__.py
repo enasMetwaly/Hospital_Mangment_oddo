@@ -1,0 +1,1 @@
+from . import patient ,hms_department,hms_doctors, patient_states_logs ,inherit_hospital_customers
